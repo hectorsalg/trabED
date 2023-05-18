@@ -8,7 +8,8 @@ Curso *criarCurso(){
 }
 
 Curso *criarNo(int codC, char nome[], int qtdBCurso, int semana){
-    Curso *raiz = (Curso *) malloc(sizeof(Curso));
+    Curso *raiz;
+    raiz = (Curso *) malloc(sizeof(Curso));
     raiz->codC = codC;
     strcpy(raiz->nome, nome);
     raiz->qtdBCurso = qtdBCurso;
@@ -20,10 +21,10 @@ Curso *criarNo(int codC, char nome[], int qtdBCurso, int semana){
 void inserirCurso(Curso **raiz, Curso *no){
     if(!(*raiz)){
         (*raiz) = no;
-    }else if(no->codC < (*raiz)->codC){
-        inserirCurso(&((*raiz)->esq), no);
-    }else if(no->codC > (*raiz)->codC){
-        inserirCurso(&((*raiz)->dir), no);
+    }else if(no->codC < (**raiz).codC){
+        inserirCurso(&((**raiz).esq), no);
+    }else if(no->codC > (**raiz).codC){
+        inserirCurso(&((**raiz).dir), no);
     }
 }
 
