@@ -15,6 +15,10 @@ typedef struct Curso {
     struct Curso *esq, *dir;
 } Curso;
 
+Curso *criarCurso();
+void inserirCurso(Curso **raiz, Curso *no);
+Curso *criarNo(int codC, char nome[], int qtdBCurso, int semana); 
+
 void imprimirCurso(Curso *raiz); // imprimir todos os dados do curso
 void imprimirCodCurso(Curso *raiz, int cod); // imprimir somente os códigos
 void imprimirCursosQtdB(Curso *raiz, int qtdB); // imprimir quantidade de cursos com mesma quantidade de blocos
