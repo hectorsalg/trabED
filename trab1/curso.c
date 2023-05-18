@@ -27,10 +27,10 @@ void inserirCurso(Curso **raiz, Curso *no){
     }
 }
 
-void imprimirCurso(Curso *raiz){
+void imprimirCurso(Curso *raiz){ // InOrder
     if(raiz){
-        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
         imprimirCurso(raiz->esq);
+        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
         imprimirCurso(raiz->dir);
     }
 }
