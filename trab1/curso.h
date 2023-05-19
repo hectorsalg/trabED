@@ -26,5 +26,8 @@ void imprimirArvDisc(Curso *raiz); // imprimir árvore da disciplina em ordem cr
 void imprimirDadosDisc(Curso *raiz, int codC, int codD); // imprimir todos os dados da disciplina
 void imprimirDiscBloco(Curso *raiz, int codC, int bloco); // imprimir as disciplinas de um curso de um dado bloco
 void imprimirDiscCurso(Curso *raiz, int codC, int cargaHor); // imprimir todas as disciplinas com a mesma carga horária
-void removerDisc(Curso *raiz, int codD, int codC); // remover disciplina do curso por código de ambos
-void removerCurso(Curso *raiz, int codC); // remover curso (somente se estiver sem disciplinas)
+void removerDisc(Curso **raiz, int codD, int codC); // remover disciplina do curso por código de ambos
+void removerCurso(Curso **raiz, int codC); // remover curso (somente se estiver sem disciplinas)
+
+int ehfolha(Curso *raiz);
+Curso *enderecoFilho(Curso *raiz);

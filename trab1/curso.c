@@ -35,3 +35,35 @@ void imprimirCurso(Curso *raiz){ // InOrder
         imprimirCurso(raiz->dir);
     }
 }
+
+void removerCurso(Curso **raiz, int codC) {
+    Curso *aux;
+    if (*raiz) {
+        if ((*raiz)->codC == codC) {
+            if (ehfolha(*raiz)) {
+                aux = *raiz;
+                *raiz = NULL;
+                free(aux);
+            } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
+                Curso *endFilho;
+                endFilho = enderecoFilho(*raiz);
+                aux = *raiz;
+                *raiz = endFilho;
+                free(aux);
+            }
+        }
+    }
+}
+
+int ehfolha(Curso *raiz) {
+    return !(raiz->esq || raiz->esq);    
+}
+
+Curso *enderecoFilho(Curso *raiz) {
+    Curso *aux;
+    if (raiz->dir)
+        aux = raiz->dir;
+    else 
+        aux = raiz->esq;
+    return aux;
+}
