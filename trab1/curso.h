@@ -1,6 +1,6 @@
 typedef struct Disciplina {
     int codD;
-    int nome[50];
+    char nome[50];
     int qtdBDisciplina;
     int cargHor;
     struct Disciplina *esq, *dir;
@@ -17,7 +17,12 @@ typedef struct Curso {
 
 Curso *criarCurso();
 void inserirCurso(Curso **raiz, Curso *no);
-Curso *criarNo(int codC, char nome[], int qtdBCurso, int semana); 
+Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana); 
+
+Curso* existeCurso(Curso *raiz, int codC);
+Disciplina *criarNoDisciplina(int codC, char nome[], int qtdBDisciplina, int cargHor);
+void inserirDisciplina(Curso *raiz, Disciplina *no);
+void imprimirDisciplina(Disciplina *raiz);
 
 void imprimirCurso(Curso *raiz); // imprimir todos os dados do curso
 void imprimirCodCurso(Curso *raiz, int cod); // imprimir somente os códigos

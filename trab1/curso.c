@@ -7,13 +7,25 @@ Curso *criarCurso(){
     return NULL;
 }
 
-Curso *criarNo(int codC, char nome[], int qtdBCurso, int semana){
+Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana){
     Curso *raiz;
     raiz = (Curso *) malloc(sizeof(Curso));
     raiz->codC = codC;
+    raiz->disciplinas = NULL;
     strcpy(raiz->nome, nome);
     raiz->qtdBCurso = qtdBCurso;
     raiz->semana = semana;
+    raiz->esq = raiz->dir = NULL;
+    return raiz;
+}
+
+Disciplina *criarNoDisciplina(int codC, char nome[], int qtdBDisciplina, int cargHor){
+    Disciplina *raiz;
+    raiz = (Disciplina *) malloc(sizeof(Disciplina));
+    raiz->codD = codC;
+    strcpy(raiz->nome, nome);
+    raiz->qtdBDisciplina = qtdBDisciplina;
+    raiz->cargHor = cargHor;
     raiz->esq = raiz->dir = NULL;
     return raiz;
 }
@@ -28,13 +40,48 @@ void inserirCurso(Curso **raiz, Curso *no){
     }
 }
 
+Curso* existeCurso(Curso *raiz, int codC){
+    Curso *aux;
+    aux = NULL;
+    if(raiz){
+        if((*raiz).codC == codC){
+            aux = raiz;
+        }else if(codC < (*raiz).codC) aux = existeCurso((*raiz).esq, codC);
+        else aux = existeCurso((*raiz).dir, codC);
+    }
+    return aux;
+}
+
+void inserirDisciplina(Curso *raiz, Disciplina *no){
+    //fazer uma flag para saber se inseriu
+    if(raiz){
+        if(!(*raiz).disciplinas){
+            if((*raiz).qtdBCurso > no->qtdBDisciplina)
+                (*raiz).disciplinas = no;
+        }else if((*no).codD < (*raiz).disciplinas->codD)
+            raiz->disciplinas->esq;
+        else 
+            (*raiz).disciplinas->dir;
+    }
+}
+
 void imprimirCurso(Curso *raiz){ // InOrder
     if(raiz){
         imprimirCurso(raiz->esq);
         printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
+        if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
         imprimirCurso(raiz->dir);
     }
 }
+
+void imprimirDisciplina(Disciplina *raiz){
+    if(raiz){
+        imprimirDisciplina(raiz->esq);
+        printf("CodigoD: %d\nNome Dis: %s\nBlocos da disciplina: %d\nCarga Horaria: %d\n\n", raiz->codD, raiz->nome, raiz->qtdBDisciplina, raiz->cargHor);
+        imprimirDisciplina(raiz->dir);
+    }
+}
+
 
 void removerCurso(Curso **raiz, int codC) {
     Curso *aux;
