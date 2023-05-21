@@ -56,7 +56,7 @@ void inserirDisciplina(Curso *raiz, Disciplina *no){
     //fazer uma flag para saber se inseriu
     if(raiz){
         if(!(*raiz).disciplinas){
-            if((*raiz).qtdBCurso > no->qtdBDisciplina)
+            if((*raiz).qtdBCurso > no->qtdBDisciplina && no->cargHor % (*raiz).semana == 0)
                 (*raiz).disciplinas = no;
         }else if((*no).codD < (*raiz).disciplinas->codD)
             raiz->disciplinas->esq;
@@ -71,6 +71,32 @@ void imprimirCurso(Curso *raiz){ // InOrder
         printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
         if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
         imprimirCurso(raiz->dir);
+    }
+}
+
+void imprimirCodCurso(Curso *raiz, int cod){
+    if(raiz){
+        if(cod == raiz->codC){
+            imprimirCurso(raiz->esq);
+            printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
+            if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
+        }
+        else if(cod < raiz->codC) 
+            imprimirCodCurso(raiz->esq, cod);
+        else 
+            imprimirCodCurso(raiz->dir, cod);
+    }
+}
+
+void imprimirCursosQtdB(Curso *raiz, int qtdB){
+    if(raiz){
+        imprimirCursosQtdB(raiz->esq, qtdB); 
+        if(qtdB == raiz->qtdBCurso){
+            imprimirCurso(raiz->esq);
+            printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
+            if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
+        }
+        imprimirCursosQtdB(raiz->dir, qtdB);
     }
 }
 
