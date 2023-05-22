@@ -148,7 +148,10 @@ void removerCurso(Curso **raiz, int codC) {
                 *raiz = filho_esq;
                 free(aux);
             }
-        }
+        }else if(codC < (*raiz)->codC)
+            removerCurso(&((*raiz)->esq), codC);
+        else
+            removerCurso(&((*raiz)->dir), codC);
     }
 }
 
