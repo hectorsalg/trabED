@@ -140,13 +140,28 @@ void removerCurso(Curso **raiz, int codC) {
                 aux = *raiz;
                 *raiz = endFilho;
                 free(aux);
+            }else{ // dois filhos
+                Curso *aux, *filho_esq;
+                aux = *raiz;
+                filho_esq = (*raiz)->esq;
+                esq_filh(&((*raiz)->esq), (*raiz)->dir);
+                *raiz = filho_esq;
+                free(aux);
             }
         }
     }
 }
 
+void esq_filh(Curso **filho_recebe, Curso *filho_outro){
+    if(*filho_recebe){
+        esq_filh((&(*filho_recebe)->dir), filho_outro);
+    }else{
+        *filho_recebe = filho_outro;
+    }
+}
+
 int ehfolha(Curso *raiz) {
-    return !(raiz->esq || raiz->esq);    
+    return !(raiz->esq || raiz->esq);     
 }
 
 Curso *enderecoFilho(Curso *raiz) {
@@ -157,3 +172,4 @@ Curso *enderecoFilho(Curso *raiz) {
         aux = raiz->esq;
     return aux;
 }
+
