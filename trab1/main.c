@@ -23,10 +23,10 @@ int main(){
     aux = existeCurso(raiz,  2002);
     if(aux) printf("Existe curso\n");
     else printf("Não foi curso\n");
-    removerCurso(&raiz, 2002);
+    removerCurso(&raiz, 1900);
     //inserirDisciplina(aux, criarNoDisciplina(1, "ED_2", 1, 60));
     imprimirCurso(raiz);
     printf("AAA\n");
 
-
+    return 0;
 }

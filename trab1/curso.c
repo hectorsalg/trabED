@@ -130,6 +130,7 @@ void removerCurso(Curso **raiz, int codC) {
     Curso *aux;
     if (*raiz) {
         if ((*raiz)->codC == codC) {
+            printf("%d\n", ehfolha(*raiz));
             if (ehfolha(*raiz)) {
                 aux = *raiz;
                 *raiz = NULL;
@@ -163,8 +164,8 @@ void esq_filh(Curso **filho_recebe, Curso *filho_outro){
     }
 }
 
-int ehfolha(Curso *raiz) {
-    return !(raiz->esq || raiz->esq);     
+int ehfolha(Curso *raiz) { 
+    return !(raiz->esq || raiz->dir);
 }
 
 Curso *enderecoFilho(Curso *raiz) {
