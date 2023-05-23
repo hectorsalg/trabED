@@ -21,7 +21,7 @@ Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana);
 
 Curso* existeCurso(Curso *raiz, int codC);
 Disciplina *criarNoDisciplina(int codC, char nome[], int qtdBDisciplina, int cargHor);
-void inserirDisciplina(Curso *raiz, Disciplina *no);
+void inserirDisciplina(Disciplina **raiz, Disciplina *no);
 void imprimirDisciplina(Disciplina *raiz);
 
 void imprimirCurso(Curso *raiz); // imprimir todos os dados do curso
