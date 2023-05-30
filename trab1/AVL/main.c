@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "curso.h"
+#include "Avl.h"
+#include "inserirCurso.h"
+#include "imprimirCurso.h"
+#include "inserirDisciplina.h"
+#include "imprimirDisciplina.h"
+#include "removerCurso.h"
+#include "altura.h"
+
+
 
 int main(){
     Curso *raiz, *aux;
@@ -29,6 +37,8 @@ int main(){
     inserirDisciplina(&aux->disciplinas, criarNoDisciplina(2, "ED_1", 1, 60));
     imprimirCurso(raiz);
     // printf("AAA\n");
+
+    printf("Altura da arvore: %d\n", alturaArvore(raiz));
 
     return 0;
 }
