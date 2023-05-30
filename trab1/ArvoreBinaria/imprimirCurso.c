@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/curso.h"
+#include "./headers/curso.h"
 #include <string.h>
-#include "../headers/imprimirCurso.h"
-#include "../headers/imprimirDisciplina.h"
+#include "./headers/imprimirCurso.h"
+#include "./headers/imprimirDisciplina.h"
 
 void imprimirCurso(Curso *raiz){ // InOrder
     if(raiz){

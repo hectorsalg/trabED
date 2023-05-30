@@ -12,37 +12,34 @@ void removerCurso(Curso **raiz, int codC) {
             if (ehfolha(*raiz)) {
                 aux = *raiz;
                 *raiz = NULL;
-                free(aux);
             } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
                 Curso *endFilho;
                 endFilho = enderecoFilho(*raiz);
                 aux = *raiz;
                 *raiz = endFilho;
-                free(aux);
             }else{ // dois filhos
-                Curso *aux, *filho_esq;
+                Curso *aux, *filhoEsq;
                 aux = *raiz;
-                filho_esq = (*raiz)->esq;
-                esq_filh(&((*raiz)->esq), (*raiz)->dir);
-                *raiz = filho_esq;
-                free(aux);
+                filhoEsq = (*raiz)->esq;
+                maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
+                *raiz = filhoEsq;
             }
-        }else if(codC < (*raiz)->codC)
+            free(aux);
+        } else if(codC < (*raiz)->codC)
             removerCurso(&((*raiz)->esq), codC);
         else
             removerCurso(&((*raiz)->dir), codC);
     }
 }
 
-void esq_filh(Curso **filho_recebe, Curso *filho_outro){
-    if(*filho_recebe){
-        esq_filh((&(*filho_recebe)->dir), filho_outro);
-    }else{
-        *filho_recebe = filho_outro;
-    }
+void maiorFilhoEsq(Curso **filhoRecebe, Curso *outroFilho){
+    if(*filhoRecebe)
+        maiorFilhoEsq((&(*filhoRecebe)->dir), outroFilho);
+    else
+        *filhoRecebe = outroFilho;
 }
 
-int ehfolha(Curso *raiz) { 
+int folha(Curso *raiz) { 
     return !(raiz->esq || raiz->dir);
 }
 
@@ -61,13 +58,13 @@ int alturaArvore(Curso *raiz){
     if(raiz){
         he = alturaArvore(raiz->esq);
         hd = alturaArvore(raiz->dir);
-        if(he > hd){
+        if(he > hd)
             h = he + 1;
-        }else{
+        else
             h = hd + 1;
-        }
-    }else{
+        
+    } else
         h = -1;
-    }
+    
     return (h);
 }
