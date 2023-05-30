@@ -47,20 +47,12 @@ void balancear(Curso **raiz){
                 rotacaoDireita(&((*raiz)->esq));
             rotacaoEsqueda(raiz);
         }
-
     }
+
 }
 
 int fb(Curso *no){
-
-    int tam;
-    if(no){
-        printf("Entetou 1\n");
-        tam = (alturaArvore(no->esq) - alturaArvore(no->dir));
-        printf("saindo, tam: %d\n", tam);
-    }else 
-        tam = 0;
-    return tam;
+    return (alturaArvore(no->esq) - alturaArvore(no->dir));
 }
 
 void rotacaoEsqueda(Curso **raiz){

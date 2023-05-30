@@ -1,30 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/curso.h"
+#include "./headers/curso.h"
 #include <string.h>
-#include "../headers/removerCurso.h"
+#include "./headers/removerCurso.h"
 
 void removerCurso(Curso **raiz, int codC) {
     Curso *aux;
     if (*raiz) {
-        if ((*raiz)->codC == codC) {
-            printf("%d\n", ehfolha(*raiz));
-            if (ehfolha(*raiz)) {
-                aux = *raiz;
-                *raiz = NULL;
-            } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
-                Curso *endFilho;
-                endFilho = enderecoFilho(*raiz);
-                aux = *raiz;
-                *raiz = endFilho;
-            }else{ // dois filhos
-                Curso *aux, *filhoEsq;
-                aux = *raiz;
-                filhoEsq = (*raiz)->esq;
-                maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
-                *raiz = filhoEsq;
+        if ((*raiz)->disciplinas != NULL) {
+            if ((*raiz)->codC == codC) {
+                if (folha(*raiz)) {
+                    aux = *raiz;
+                    *raiz = NULL;
+                } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
+                    Curso *endFilho;
+                    endFilho = enderecoFilho(*raiz);
+                    aux = *raiz;
+                    *raiz = endFilho;
+                }else{ // dois filhos
+                    Curso *aux, *filhoEsq;
+                    aux = *raiz;
+                    filhoEsq = (*raiz)->esq;
+                    maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
+                    *raiz = filhoEsq;
+                }
+                free(aux);
             }
-            free(aux);
         } else if(codC < (*raiz)->codC)
             removerCurso(&((*raiz)->esq), codC);
         else
