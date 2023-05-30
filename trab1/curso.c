@@ -31,16 +31,16 @@ Disciplina *criarNoDisciplina(int codC, char nome[], int qtdBDisciplina, int car
 }
 
 void inserirCurso(Curso **raiz, Curso *no){
-    if(!(*raiz)){
-        (*raiz) = no;
-    }else if(no->codC < (**raiz).codC){
-        inserirCurso(&((**raiz).esq), no);
-    }else if(no->codC > (**raiz).codC){
-        inserirCurso(&((**raiz).dir), no);
-    }
+    if(raiz){
+        if(no->codC < (**raiz).codC){
+            inserirCurso(&((*raiz)->esq), no);
+        }else if(no->codC > (*raiz)->codC){
+            inserirCurso(&((*raiz)->dir), no);
+        }
+    } else *raiz = no;
 }
 
-Curso* existeCurso(Curso *raiz, int codC){
+Curso *existeCurso(Curso *raiz, int codC){
     Curso *aux;
     aux = NULL;
     if(raiz){
@@ -55,15 +55,12 @@ Curso* existeCurso(Curso *raiz, int codC){
 void inserirDisciplina(Disciplina **raiz, Disciplina *no){
     //fazer uma flag para saber se inseriu
     if(raiz){
-        if(!(*raiz)){
-            // if((*raiz).qtdBCurso > no->qtdBDisciplina && no->cargHor % (*raiz).semana == 0)
-            *raiz = no;
-        }else if((*no).codD < (**raiz).codD){
+        if((*no).codD < (**raiz).codD){
             inserirDisciplina(&((*raiz)->esq), no);
-        }else{
+        }else if ((*no).codD > (*raiz)->codD){
             inserirDisciplina(&((*raiz)->dir),  no);
         }
-    }
+    } else *raiz = no;
 }
 
 void imprimirCurso(Curso *raiz){ // InOrder
@@ -132,24 +129,22 @@ void removerCurso(Curso **raiz, int codC) {
     if (*raiz) {
         if ((*raiz)->codC == codC) {
             printf("%d\n", ehfolha(*raiz));
-            if (ehfolha(*raiz)) {
+            if (folha(*raiz)) {
                 aux = *raiz;
                 *raiz = NULL;
-                free(aux);
             } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
                 Curso *endFilho;
                 endFilho = enderecoFilho(*raiz);
                 aux = *raiz;
                 *raiz = endFilho;
-                free(aux);
             }else{ // dois filhos
                 Curso *aux, *filho_esq;
                 aux = *raiz;
                 filho_esq = (*raiz)->esq;
-                esq_filh(&((*raiz)->esq), (*raiz)->dir);
+                esq_filho(&((*raiz)->esq), (*raiz)->dir);
                 *raiz = filho_esq;
-                free(aux);
             }
+            free(aux);
         }else if(codC < (*raiz)->codC)
             removerCurso(&((*raiz)->esq), codC);
         else
@@ -157,15 +152,15 @@ void removerCurso(Curso **raiz, int codC) {
     }
 }
 
-void esq_filh(Curso **filho_recebe, Curso *filho_outro){
+void esqFilho(Curso **filho_recebe, Curso *filho_outro){
     if(*filho_recebe){
-        esq_filh((&(*filho_recebe)->dir), filho_outro);
+        esqFilho((&(*filho_recebe)->dir), filho_outro);
     }else{
         *filho_recebe = filho_outro;
     }
 }
 
-int ehfolha(Curso *raiz) { 
+int folha(Curso *raiz) { 
     return !(raiz->esq || raiz->dir);
 }
 
