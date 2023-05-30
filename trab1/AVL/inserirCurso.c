@@ -36,21 +36,18 @@ void inserirCurso(Curso **raiz, Curso *no){
 
 void balancear(Curso **raiz){
     if(*raiz){
-        printf("teste1\n");
-        int fator = fb(*raiz);
 
-        if(fator < -1 && fb((*raiz)->dir) <= 0 )
-            rotacaoEsqueda(raiz);
-        else if(fator > 1 && fb((*raiz)->dir) >= 0 )
+        if(fb(*raiz) == 2){
+            if(fb((*raiz)->esq) < 0)
+                rotacaoEsqueda(&((*raiz)->dir));
             rotacaoDireita(raiz);
-        else if(fator > 1 && fb((*raiz)->dir) < 0 ){
-            rotacaoEsqueda(raiz);
-            rotacaoDireita(raiz);
-        }else if(fator < -1 && fb((*raiz)->dir) < 0 ){
-            rotacaoDireita(raiz);
+
+        }else if(fb(*raiz) == -2){
+            if(fb((*raiz)->dir) > 0)
+                rotacaoDireita(&((*raiz)->esq));
             rotacaoEsqueda(raiz);
         }
-        printf("teste2\n");
+
     }
 }
 
