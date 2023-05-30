@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/curso.h"
-#include "../headers/inserirCurso.h"
-#include "../headers/imprimirCurso.h"
-#include "../headers/inserirDisciplina.h"
-#include "../headers/imprimirDisciplina.h"
-#include "../headers/removerCurso.h"
+#include "./headers/curso.h"
+#include "./headers/inserirCurso.h"
+#include "./headers/imprimirCurso.h"
+#include "./headers/inserirDisciplina.h"
+#include "./headers/imprimirDisciplina.h"
+#include "./headers/removerCurso.h"
 
 
 

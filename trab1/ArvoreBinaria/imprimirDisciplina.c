@@ -5,26 +5,25 @@
 #include "./headers/imprimirDisciplina.h"
 
 void imprimirDisciplina(Disciplina *raiz){
-    if(raiz){
-        printf("CodigoD: %d\nNome Dis: %s\nBlocos da disciplina: %d\nCarga Horaria: %d\n\n", raiz->codD, raiz->nome, raiz->qtdBDisciplina, raiz->cargHor);
-    }
+    if(raiz)
+        printf("CodigoD: %d\nNome Dis: %s\nBlocos da disciplina: %d\nCarga Horaria: %d\n\n", raiz->codD, raiz->nome, raiz->bloco, raiz->cargHor);
 }
 
-void imprimirDadosDisc(Disciplina *raiz){
+void imprimirDisciplinas(Disciplina *raiz){
     if(raiz){
-        imprimirDadosDisc(raiz->esq);
+        imprimirDisciplinas(raiz->esq);
         imprimirDisciplina(raiz);
-        imprimirDadosDisc(raiz->dir);
+        imprimirDisciplinas(raiz->dir);
     }
 }
 
-void imprimirDisciplinaCod(Disciplina *raiz, int cod){
+void imprimirDadosDisciplina(Disciplina *raiz, int codD){
     if(raiz){
-        if(raiz->codD == cod)
+        if(raiz->codD == codD)
             imprimirDisciplina(raiz);
-        else if(cod < raiz->codD)
-            imprimirDisciplinaCod(raiz->esq, cod);
+        else if(codD < raiz->codD)
+            imprimirDisciplinaCod(raiz->esq, codD);
         else
-            imprimirDisciplinaCod(raiz->dir, cod);
+            imprimirDisciplinaCod(raiz->dir, codD);
     }
 }

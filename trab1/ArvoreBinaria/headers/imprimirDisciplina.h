@@ -1,6 +1,4 @@
-
 void imprimirDisciplina(Disciplina *raiz);
-void imprimirArvDisc(Curso *raiz); // imprimir árvore da disciplina em ordem crescente (In-ordem)
-void imprimirDadosDisc(Disciplina *raiz); // imprimir todos os dados da disciplina
+void imprimirDisciplinas(Disciplina *raiz);
+void imprimirDadosDisciplina(Disciplina *raiz, int codD); // imprimir todos os dados da disciplina pelo codigo do curso
 void imprimirDiscBloco(Curso *raiz, int codC, int bloco); // imprimir as disciplinas de um curso de um dado bloco
-void imprimirDiscCurso(Curso *raiz, int codC, int cargaHor); // imprimir todas as disciplinas com a mesma carga 

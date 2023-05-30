@@ -6,7 +6,7 @@
 
 void removerCurso(Curso **raiz, int codC) {
     Curso *aux;
-    if (*raiz) {
+    if(raiz) {
         if ((*raiz)->disciplinas != NULL) {
             if ((*raiz)->codC == codC) {
                 if (folha(*raiz)) {
@@ -68,4 +68,8 @@ int alturaArvore(Curso *raiz){
         h = -1;
     
     return (h);
+}
+
+void removerDisc(Curso **raiz, int codD, int codC) {
+
 }
