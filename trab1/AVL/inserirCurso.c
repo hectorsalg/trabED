@@ -11,7 +11,7 @@ Curso *criarCurso(){
 
 Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana){
     Curso *raiz;
-    raiz = (Curso *)malloc(sizeof(Curso));
+    raiz = (Curso *) malloc(sizeof(Curso));
     raiz->codC = codC;
     raiz->disciplinas = NULL;
     strcpy(raiz->nome, nome);
@@ -31,21 +31,23 @@ void inserirCurso(Curso **raiz, Curso *no){
     }else if (no->codC > (**raiz).codC){
         inserirCurso(&((**raiz).dir), no);
     }
-    balancear(raiz);     
+    balancear(raiz);  
+    (*raiz)->altura = alturaArvore(*raiz);   
 }
+
 
 void balancear(Curso **raiz){
     if(*raiz){
 
         if(fb(*raiz) == 2){
             if(fb((*raiz)->esq) < 0)
-                rotacaoEsqueda(&((*raiz)->dir));
+                rotacaoEsquerda(&((*raiz)->dir));
             rotacaoDireita(raiz);
 
         }else if(fb(*raiz) == -2){
             if(fb((*raiz)->dir) > 0)
                 rotacaoDireita(&((*raiz)->esq));
-            rotacaoEsqueda(raiz);
+            rotacaoEsquerda(raiz);
         }
     }
 
@@ -55,35 +57,28 @@ int fb(Curso *no){
     return (alturaArvore(no->esq) - alturaArvore(no->dir));
 }
 
-void rotacaoEsqueda(Curso **raiz){
-    Curso *filhoDireito, *filhoDofilho_direito;
+void rotacaoEsquerda(Curso **raiz){
+    Curso *aux;
     
-    filhoDireito = (*raiz)->dir;
-    filhoDofilho_direito = filhoDireito->esq;
 
-    filhoDireito->esq = (*raiz);
-    (*raiz)->dir = filhoDofilho_direito;
+    aux = (*raiz)->dir;
+    (*raiz)->dir = aux->esq;
+    aux->esq = (*raiz);
+    (*raiz) = aux;
 
-    (*raiz) = filhoDireito;
+    (*raiz)->altura = alturaArvore(raiz);
+    (*raiz)->esq->altura = alturaArvore((*raiz)->esq);
 
-    (*raiz)->altura = alturaArvore(*raiz);
-    if(filhoDofilho_direito)
-        filhoDofilho_direito->altura = alturaArvore(filhoDofilho_direito); 
 }
 
 void rotacaoDireita(Curso **raiz){
-    Curso *filhoEsquerdo, *filhoDofilho_Esquerdo;
+    Curso *aux;
     
-    filhoEsquerdo = (*raiz)->esq;
-    filhoDofilho_Esquerdo = filhoEsquerdo->esq;
+    aux = (*raiz)->esq;
+    (*raiz)->esq = aux->dir;
+    aux->dir = (*raiz);
+    (*raiz) = aux;
 
-    filhoEsquerdo->dir = (*raiz);
-    (*raiz)->esq = filhoDofilho_Esquerdo;
-
-    (*raiz) = filhoEsquerdo;
-
-    (*raiz)->altura = alturaArvore(*raiz);
-    
-    if (filhoDofilho_Esquerdo)
-        filhoDofilho_Esquerdo->altura = alturaArvore(filhoDofilho_Esquerdo); 
+    (*raiz)->altura = alturaArvore(raiz);
+    (*raiz)->dir->altura = alturaArvore((*raiz)->dir);
 }

@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
 #include <string.h>
+#include "./headers/curso.h"
 #include "./headers/imprimirCurso.h"
 #include "./headers/imprimirDisciplina.h"
 
 void imprimirCurso(Curso *raiz){
     if(raiz)
-        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->blocos, raiz->semana);
+        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
 }
 
 void imprimirCursos(Curso *raiz){
@@ -32,12 +32,12 @@ void imprimirDadosCurso(Curso *raiz, int cod){
     }
 }
 
+// 3
 void imprimirCursosQtdB(Curso *raiz, int qtdB){
     if(raiz){
         imprimirCursosQtdB(raiz->esq, qtdB); 
-        if(qtdB == raiz->blocos[0] || qtdB == raiz->blocos[1]){
-            imprimirCurso(raiz->esq);
-            printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->blocos, raiz->semana);
+        if(qtdB == raiz->qtdBCurso){
+            imprimirCurso(raiz);
             if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
         }
         imprimirCursosQtdB(raiz->dir, qtdB);
@@ -55,30 +55,39 @@ void imprimirDiscCurso(Curso *raiz, int codD, int codC){
     }
 }
 
+
+// 6
 void imprimirDiscBloco(Curso *raiz, int codC, int bloco){
-    if(raiz){
-        if(codC == raiz->codC){
-            if(raiz->disciplinas->bloco == raiz->blocos[bloco])
-                imprimirDisciplina(raiz->disciplinas);
-        } else if(codC < raiz->codC)
-            imprimirDiscBloco(raiz->esq, codC, bloco);
-        else if(codC > raiz->codC)
-            imprimirDiscBloco(raiz->dir, codC, bloco);
+    Curso *aux;
+    aux = existeCurso(raiz, codC);
+
+    if(aux){
+        if(codC == raiz->codC)
+            DiscBloco(raiz->disciplinas, bloco);
     }
 }
 
-// 7
+// 6
+void DiscBloco(Disciplina *raiz, int bloco){
+    if(raiz){
+        DiscBloco(raiz->esq, bloco);
+        if(raiz->bloco == bloco)
+            imprimirDisciplina(raiz);
+        DiscBloco(raiz->dir, bloco);
+    }
+}
+
+// (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
+// do curso e a carga horária devem ser informadas pelo usuário;
 void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaHor){
-    if(raiz){
-        if(codC == raiz->codC){
-                cargaHorDis(raiz->disciplinas, cargaHor);
-        } else if(codC < raiz->codC)
-            imprimirDiscCursoHorario(raiz->esq, codC, cargaHor);
-        else if(codC > raiz->codC)
-            imprimirDiscCursoHorario(raiz->dir, codC, cargaHor);
-    }
+    Curso *aux;
+    aux = existeCurso(raiz, codC);
+    if(aux)
+        cargaHorDis(raiz->disciplinas, cargaHor); 
 }
 
+// (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
+// do curso e a carga horária devem ser informadas pelo usuário;
 void cargaHorDis(Disciplina *raiz, int CargaHor){
     if(raiz){
         cargaHorDis(raiz->esq, CargaHor);

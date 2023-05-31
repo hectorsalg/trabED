@@ -1,26 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
 #include <string.h>
 #include "./headers/removerCurso.h"
+#include "./headers/curso.h"
 
 void removerCurso(Curso **raiz, int codC) {
     if(*raiz) {
         if ((*raiz)->disciplinas != NULL) {
             if ((*raiz)->codC == codC) {
-                Curso *aux;
+                Curso *aux, *endFilho;
                 aux = *raiz;
                 if (folha(*raiz)) {
                     *raiz = NULL;
                 } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
-                    Curso *endFilho;
                     endFilho = enderecoFilho(*raiz);
                     *raiz = endFilho;
                 }else{ // dois filhos
-                    Curso *filhoEsq;
-                    filhoEsq = (*raiz)->esq;
+                    endFilho = (*raiz)->esq;
                     maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
-                    *raiz = filhoEsq;
+                    *raiz = endFilho;
                 }
                 free(aux);
             }
@@ -70,11 +68,10 @@ int alturaArvore(Curso *raiz){
 
 void removerDisc(Disciplina **raiz, int codD){
 
-    if(*raiz){
+    if(raiz){
         if((*raiz)->codD == codD){
             Disciplina *aux, *endFilho;
             aux = (*raiz);
-
             if(folhaDis((*raiz)))
                 (*raiz) = NULL;
             else if(endFilho = enderecoFilhoDis((*raiz)))
@@ -84,9 +81,7 @@ void removerDisc(Disciplina **raiz, int codD){
                 maiorFilhoEsqDis(&((*raiz)->esq), (*raiz)->dir);
                 (*raiz) = endFilho;
             }
-
             free(aux);
-
         }else if(codD < (*raiz)->codD)
             removerDisc(&((*raiz)->esq), codD);
         else if(codD > (*raiz)->codD)
@@ -100,7 +95,7 @@ int folhaDis(Disciplina *raiz) {
 
 Disciplina *enderecoFilhoDis(Disciplina *raiz) {
     Disciplina *aux;
-    if(raiz->dir || raiz->esq){
+    if(!(raiz->dir) || !(raiz->esq)){
         if (raiz->dir)
             aux = raiz->dir;
         else if(raiz->esq)

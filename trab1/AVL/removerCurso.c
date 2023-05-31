@@ -5,26 +5,23 @@
 #include "removerCurso.h"
 
 void removerCurso(Curso **raiz, int codC) {
-    Curso *aux;
     if (*raiz) {
         if ((*raiz)->codC == codC) {
-            printf("%d\n", ehfolha(*raiz));
-            if (ehfolha(*raiz)) {
+            if(!(*raiz)->disciplinas){
+                Curso *aux;
                 aux = *raiz;
-                *raiz = NULL;
-                free(aux);
-            } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
-                Curso *endFilho;
-                endFilho = enderecoFilho(*raiz);
-                aux = *raiz;
-                *raiz = endFilho;
-                free(aux);
-            }else{ // dois filhos
-                Curso *aux, *filho_esq;
-                aux = *raiz;
-                filho_esq = (*raiz)->esq;
-                esq_filh(&((*raiz)->esq), (*raiz)->dir);
-                *raiz = filho_esq;
+                if (ehfolha(*raiz)) {
+                    *raiz = NULL;
+                } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
+                    Curso *endFilho;
+                    endFilho = enderecoFilho(*raiz);
+                    *raiz = endFilho;
+                }else{ // dois filhos
+                    Curso *filho_esq;
+                    filho_esq = (*raiz)->esq;
+                    esq_filh(&((*raiz)->esq), (*raiz)->dir);
+                    *raiz = filho_esq;
+                }
                 free(aux);
             }
         }else if(codC < (*raiz)->codC)
