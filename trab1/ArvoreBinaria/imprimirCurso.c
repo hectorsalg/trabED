@@ -10,25 +10,23 @@ void imprimirCurso(Curso *raiz){
         printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
 }
 
+// 1
 void imprimirCursos(Curso *raiz){
     if(raiz){
         imprimirCursos(raiz->esq);
         imprimirCurso(raiz);
-        if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas); // falta codigo de disciplina
+        // if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas); // falta codigo de disciplina
         imprimirCursos(raiz->dir);
     }
 }
 
+// 2
 void imprimirDadosCurso(Curso *raiz, int cod){
-    if(raiz){
-        if(cod == raiz->codC){
-            imprimirCurso(raiz);
-            if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas);
-        }
-        else if(cod < raiz->codC) 
-            imprimirDadosCurso(raiz->esq, cod);
-        else 
-            imprimirDadosCurso(raiz->dir, cod);
+    Curso *aux;
+    aux = existeCurso(raiz, cod);
+    if(aux){
+        imprimirCurso(raiz);
+            // if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas);
     }
 }
 
@@ -38,21 +36,26 @@ void imprimirCursosQtdB(Curso *raiz, int qtdB){
         imprimirCursosQtdB(raiz->esq, qtdB); 
         if(qtdB == raiz->qtdBCurso){
             imprimirCurso(raiz);
-            if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
+            // if(raiz->disciplinas) imprimirDisciplina(raiz->disciplinas);
         }
         imprimirCursosQtdB(raiz->dir, qtdB);
     }
 }
 
-void imprimirDiscCurso(Curso *raiz, int codD, int codC){
-    if(raiz){
-        if(codC == raiz->codC) {
-            imprimirDadosDisciplina(raiz->disciplinas, codD);
-        } else if(codC < raiz->codC) 
-            imprimirDiscCurso(raiz->esq, codD, codC);
-        else if(codC > raiz->codC) 
-            imprimirDiscCurso(raiz->dir, codD, codC);
-    }
+// 4
+void imprimirDisciplinasCurso(Curso *raiz, int codC){
+    Curso *aux;
+    aux = existeCurso(raiz, codC);
+    if(aux)
+        imprimirDisciplinas(raiz->disciplinas);
+}
+
+// 5
+void imprimirDiscCurso(Curso *raiz, int codC, int codD){
+    Curso *aux;
+    aux = existeCurso(raiz, codC);
+    if(aux)
+        imprimirDisciplinaCod(aux->disciplinas, codD);
 }
 
 

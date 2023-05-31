@@ -17,13 +17,13 @@ void imprimirDisciplinas(Disciplina *raiz){
     }
 }
 
-void imprimirDadosDisciplina(Disciplina *raiz, int codD){
+void imprimirDisciplinaCod(Disciplina *raiz, int codD){
     if(raiz){
         if(raiz->codD == codD)
             imprimirDisciplina(raiz);
         else if(codD < raiz->codD)
-            imprimirDadosDisciplina(raiz->esq, codD);
+            imprimirDisciplinaCod(raiz->esq, codD);
         else
-            imprimirDadosDisciplina(raiz->dir, codD);
+            imprimirDisciplinaCod(raiz->dir, codD);
     }
 }

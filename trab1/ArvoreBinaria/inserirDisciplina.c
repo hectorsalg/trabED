@@ -4,10 +4,10 @@
 #include "inserirDisciplina.h"
 #include <string.h>
 
-Disciplina *criarNoDisciplina(int codC, char nome[], int bloco, int cargHor){
+Disciplina *criarNoDisciplina(int codD, char nome[], int bloco, int cargHor){
     Disciplina *raiz;
     raiz = (Disciplina *) malloc(sizeof(Disciplina));
-    raiz->codD = codC;
+    raiz->codD = codD;
     strcpy(raiz->nome, nome);
     raiz->bloco = bloco;
     raiz->cargHor = cargHor;
@@ -15,13 +15,13 @@ Disciplina *criarNoDisciplina(int codC, char nome[], int bloco, int cargHor){
     return raiz;
 }
 
-void inserirDisciplina(Curso **curso, int codC, Disciplina **raiz, Disciplina *no){
+void inserirDisciplina(Curso **curso, int codC, Disciplina *no){
     //fazer uma flag para saber se inseriu
     Curso *aux;
     aux = existeCurso(*curso, codC);
 
     if(aux){
-        if((*raiz)->bloco > no->bloco && no->cargHor % (*curso)->semana == 0)
+        if(aux->qtdBCurso > no->bloco && no->cargHor % (*curso)->semana == 0)
             auxiliarInserirDisc(&(aux->disciplinas), no);
     }
 }
