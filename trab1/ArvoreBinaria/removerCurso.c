@@ -5,21 +5,19 @@
 #include "./headers/removerCurso.h"
 
 void removerCurso(Curso **raiz, int codC) {
-    Curso *aux;
-    if(raiz) {
+    if(*raiz) {
         if ((*raiz)->disciplinas != NULL) {
             if ((*raiz)->codC == codC) {
+                Curso *aux;
+                aux = *raiz;
                 if (folha(*raiz)) {
-                    aux = *raiz;
                     *raiz = NULL;
                 } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
                     Curso *endFilho;
                     endFilho = enderecoFilho(*raiz);
-                    aux = *raiz;
                     *raiz = endFilho;
                 }else{ // dois filhos
-                    Curso *aux, *filhoEsq;
-                    aux = *raiz;
+                    Curso *filhoEsq;
                     filhoEsq = (*raiz)->esq;
                     maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
                     *raiz = filhoEsq;
@@ -70,6 +68,50 @@ int alturaArvore(Curso *raiz){
     return (h);
 }
 
-void removerDisc(Curso **raiz, int codD, int codC) {
+void removerDisc(Disciplina **raiz, int codD){
 
+    if(*raiz){
+        if((*raiz)->codD == codD){
+            Disciplina *aux, *endFilho;
+            aux = (*raiz);
+
+            if(folhaDis((*raiz)))
+                (*raiz) = NULL;
+            else if(endFilho = enderecoFilhoDis((*raiz)))
+                (*raiz) = endFilho;
+            else{
+                endFilho = (*raiz)->esq;
+                maiorFilhoEsqDis(&((*raiz)->esq), (*raiz)->dir);
+                (*raiz) = endFilho;
+            }
+
+            free(aux);
+
+        }else if(codD < (*raiz)->codD)
+            removerDisc(&((*raiz)->esq), codD);
+        else if(codD > (*raiz)->codD)
+            removerDisc(&((*raiz)->dir), codD);
+    }
+}
+
+int folhaDis(Disciplina *raiz) { 
+    return !(raiz->esq || raiz->dir);
+}
+
+Disciplina *enderecoFilhoDis(Disciplina *raiz) {
+    Disciplina *aux;
+    if(raiz->dir || raiz->esq){
+        if (raiz->dir)
+            aux = raiz->dir;
+        else if(raiz->esq)
+            aux = raiz->esq;
+    }else aux = NULL;
+
+    return aux;
+}
+
+void maiorFilhoEsqDis(Disciplina **filhoRecebe, Disciplina *outroFilho){
+    if(!(*filhoRecebe))
+        (*filhoRecebe) = outroFilho;
+    maiorFilhoEsqDis(&((*filhoRecebe)->dir), outroFilho);
 }

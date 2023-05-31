@@ -9,7 +9,7 @@ Disciplina *criarNoDisciplina(int codC, char nome[], int qtdBDisciplina, int car
     raiz = (Disciplina *) malloc(sizeof(Disciplina));
     raiz->codD = codC;
     strcpy(raiz->nome, nome);
-    raiz->qtdBDisciplina = qtdBDisciplina;
+    // raiz->qtdBDisciplina = qtdBDisciplina;
     raiz->cargHor = cargHor;
     raiz->esq = raiz->dir = NULL;
     return raiz;

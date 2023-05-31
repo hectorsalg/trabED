@@ -22,8 +22,8 @@ void imprimirDadosDisciplina(Disciplina *raiz, int codD){
         if(raiz->codD == codD)
             imprimirDisciplina(raiz);
         else if(codD < raiz->codD)
-            imprimirDisciplinaCod(raiz->esq, codD);
+            imprimirDadosDisciplina(raiz->esq, codD);
         else
-            imprimirDisciplinaCod(raiz->dir, codD);
+            imprimirDadosDisciplina(raiz->dir, codD);
     }
 }

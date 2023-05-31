@@ -13,7 +13,7 @@ Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana){
     raiz->codC = codC;
     raiz->disciplinas = NULL;
     strcpy(raiz->nome, nome);
-    raiz->qtdBCurso = qtdBCurso;
+    // raiz->qtdBCurso = qtdBCurso;
     raiz->semana = semana;
     raiz->esq = raiz->dir = NULL;
     return raiz;

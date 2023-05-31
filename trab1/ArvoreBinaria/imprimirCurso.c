@@ -14,7 +14,7 @@ void imprimirCursos(Curso *raiz){
     if(raiz){
         imprimirCursos(raiz->esq);
         imprimirCurso(raiz);
-        if(raiz->disciplinas) imprimirDadosDisc(raiz->disciplinas); // falta codigo de disciplina
+        if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas); // falta codigo de disciplina
         imprimirCursos(raiz->dir);
     }
 }
@@ -23,12 +23,12 @@ void imprimirDadosCurso(Curso *raiz, int cod){
     if(raiz){
         if(cod == raiz->codC){
             imprimirCurso(raiz);
-            if(raiz->disciplinas) imprimirDadosDisc(raiz->disciplinas);
+            if(raiz->disciplinas) imprimirDisciplinas(raiz->disciplinas);
         }
         else if(cod < raiz->codC) 
-            imprimirCodCurso(raiz->esq, cod);
+            imprimirDadosCurso(raiz->esq, cod);
         else 
-            imprimirCodCurso(raiz->dir, cod);
+            imprimirDadosCurso(raiz->dir, cod);
     }
 }
 
@@ -47,7 +47,7 @@ void imprimirCursosQtdB(Curso *raiz, int qtdB){
 void imprimirDiscCurso(Curso *raiz, int codD, int codC){
     if(raiz){
         if(codC == raiz->codC) {
-            imprimirDadosDisc(raiz->disciplinas, codD);
+            imprimirDadosDisciplina(raiz->disciplinas, codD);
         } else if(codC < raiz->codC) 
             imprimirDiscCurso(raiz->esq, codD, codC);
         else if(codC > raiz->codC) 
