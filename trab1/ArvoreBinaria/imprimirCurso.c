@@ -67,13 +67,23 @@ void imprimirDiscBloco(Curso *raiz, int codC, int bloco){
     }
 }
 
+// 7
 void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaHor){
     if(raiz){
         if(codC == raiz->codC){
-                imprimirDisciplina(raiz->disciplinas);
+                cargaHorDis(raiz->disciplinas, cargaHor);
         } else if(codC < raiz->codC)
             imprimirDiscCursoHorario(raiz->esq, codC, cargaHor);
         else if(codC > raiz->codC)
             imprimirDiscCursoHorario(raiz->dir, codC, cargaHor);
+    }
+}
+
+void cargaHorDis(Disciplina *raiz, int CargaHor){
+    if(raiz){
+        cargaHorDis(raiz->esq, CargaHor);
+        if(raiz->cargHor == CargaHor)
+            imprimirDisciplina(raiz);
+        cargaHorDis(raiz->dir, CargaHor);
     }
 }
