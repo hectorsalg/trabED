@@ -34,7 +34,7 @@ int main(){
     inserirDisciplina( &aux->disciplinas, criarNoDisciplina(1, "ED_2", 1, 60));
     // imprimirCurso(raiz);
     inserirDisciplina(&aux->disciplinas, criarNoDisciplina(2, "ED_1", 1, 60));
-    imprimirCurso(raiz);
+    imprimirCursos(raiz);
     // printf("AAA\n");
 
     printf("Altura da arvore: %d\n", alturaArvore(raiz));

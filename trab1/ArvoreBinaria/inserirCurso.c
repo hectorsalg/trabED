@@ -20,7 +20,7 @@ Curso *criarNoCurso(int codC, char nome[], int qtdBCurso, int semana){
 }
 
 void inserirCurso(Curso **raiz, Curso *no){
-    if(raiz){
+    if(*raiz){
         if(no->codC < (**raiz).codC)
             inserirCurso(&((**raiz).esq), no);
         else if(no->codC > (**raiz).codC)
