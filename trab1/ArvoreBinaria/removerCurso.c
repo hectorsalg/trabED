@@ -4,6 +4,8 @@
 #include "curso.h"
 #include "removerCurso.h"
 
+// --------------------------------Cursos --------------------------------
+
 void removerCurso(Curso **raiz, int codC) {
     if(*raiz) {
         if ((*raiz)->disciplinas != NULL) {
@@ -65,6 +67,8 @@ int alturaArvore(Curso *raiz){
     
     return (h);
 }
+
+// --------------------------------Disciplinas --------------------------------
 
 void removerDisc(Disciplina **raiz, int codD){
 

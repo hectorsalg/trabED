@@ -5,6 +5,8 @@
 #include "imprimirCurso.h"
 #include "imprimirDisciplina.h"
 
+// --------------------------------Cursos --------------------------------
+
 void imprimirCurso(Curso *raiz){
     if(raiz)
         printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
@@ -41,6 +43,8 @@ void imprimirCursosQtdB(Curso *raiz, int qtdB){
         imprimirCursosQtdB(raiz->dir, qtdB);
     }
 }
+
+// --------------------------------Disciplinas --------------------------------
 
 // 4
 void imprimirDisciplinasCurso(Curso *raiz, int codC){

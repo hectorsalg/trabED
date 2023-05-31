@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "curso.h"
 #include "inserirCurso.h"
 #include "imprimirCurso.h"
@@ -9,12 +10,15 @@
 
 
 
+
 int main(){
     Curso *raiz, *aux;
     raiz = criarCurso();
     int op, cod, qtdBCurso, semana, bloco, cargaHor, codD;
     char nome[70];
-
+    float tempo;
+    time_t inicio, fim;
+    inicio = time(NULL);
     do{
         printf("Digite a opcao: ");
         scanf("%d", &op);
@@ -146,6 +150,11 @@ int main(){
     // printf("AAA\n");
 
     // printf("Altura da arvore: %d\n", alturaArvore(raiz));
+    fim = time(NULL);
+
+    tempo = difftime(fim, inicio);
+
+    printf("Tempo: %f\n", tempo);
 
     return 0;
 }
