@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
+#include "curso.h"
 #include <string.h>
-#include "./headers/imprimirDisciplina.h"
+#include "imprimirDisciplina.h"
 
 void imprimirDisciplina(Disciplina *raiz){
     if(raiz)

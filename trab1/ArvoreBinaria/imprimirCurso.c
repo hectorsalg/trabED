@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "./headers/curso.h"
-#include "./headers/imprimirCurso.h"
-#include "./headers/imprimirDisciplina.h"
+#include "curso.h"
+#include "imprimirCurso.h"
+#include "imprimirDisciplina.h"
 
 void imprimirCurso(Curso *raiz){
     if(raiz)
@@ -79,20 +79,20 @@ void DiscBloco(Disciplina *raiz, int bloco){
 
 // (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
 // do curso e a carga horária devem ser informadas pelo usuário;
-void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaHor){
+void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaeHor){
     Curso *aux;
     aux = existeCurso(raiz, codC);
     if(aux)
-        cargaHorDis(raiz->disciplinas, cargaHor); 
+        cargaHorDis(raiz->disciplinas, cargaeHor); 
 }
 
 // (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
 // do curso e a carga horária devem ser informadas pelo usuário;
-void cargaHorDis(Disciplina *raiz, int CargaHor){
-    if(raiz){
-        cargaHorDis(raiz->esq, CargaHor);
-        if(raiz->cargHor == CargaHor)
-            imprimirDisciplina(raiz);
-        cargaHorDis(raiz->dir, CargaHor);
+void cargaHorDis(Disciplina *dis, int CargaHor){
+    if(dis){
+        cargaHorDis(dis->esq, CargaHor);
+        if(dis->cargHor == CargaHor)
+            imprimirDisciplina(dis);
+        cargaHorDis(dis->dir, CargaHor);
     }
 }

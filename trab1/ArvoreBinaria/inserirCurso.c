@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
+#include "curso.h"
 #include <string.h>
 
 Curso *criarCurso(){

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
-#include "./headers/inserirDisciplina.h"
+#include "curso.h"
+#include "inserirDisciplina.h"
 #include <string.h>
 
 Disciplina *criarNoDisciplina(int codC, char nome[], int bloco, int cargHor){
@@ -15,14 +15,22 @@ Disciplina *criarNoDisciplina(int codC, char nome[], int bloco, int cargHor){
     return raiz;
 }
 
-void inserirDisciplina(Disciplina **raiz, Disciplina *no){
+void inserirDisciplina(Curso **curso, int codC, Disciplina **raiz, Disciplina *no){
     //fazer uma flag para saber se inseriu
-    if(raiz){
-        if((*no).codD < (**raiz).codD){
-            inserirDisciplina(&((*raiz)->esq), no);
-        }else{
-            inserirDisciplina(&((*raiz)->dir),  no);
-        }
-    }else if((*raiz)->bloco > no->bloco && no->cargHor % (*raiz).semana == 0)
+    Curso *aux;
+    aux = existeCurso(*curso, codC);
+
+    if(aux){
+        if((*raiz)->bloco > no->bloco && no->cargHor % (*curso)->semana == 0)
+            auxiliarInserirDisc(&(aux->disciplinas), no);
+    }
+}
+
+void auxiliarInserirDisc(Disciplina **raiz, Disciplina *no){
+    if(!*raiz)
         *raiz = no;
+    else if(no->codD < (*raiz)->codD)
+        auxiliarInserirDisc(&((*raiz)->esq), no);
+    else if(no->codD > (*raiz)->codD)
+        auxiliarInserirDisc( &((*raiz)->esq), no);
 }

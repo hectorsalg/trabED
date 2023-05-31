@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./headers/curso.h"
+#include "curso.h"
 #include <string.h>
+
 
 
 Curso* existeCurso(Curso *raiz, int codC){
