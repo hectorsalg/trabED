@@ -5,5 +5,9 @@ int fb(Curso *no);
 
 void balancear(Curso **raiz);
 int fb(Curso *no);
-void rotacaoEsqueda(Curso **raiz);
+void rotacaoEsquerda(Curso **raiz);
 void rotacaoDireita(Curso **raiz);
+
+
+int getAltura(Curso *raiz);
+void atualizarAltura(Curso *raiz);

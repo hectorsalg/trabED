@@ -32,7 +32,7 @@ void inserirCurso(Curso **raiz, Curso *no){
         inserirCurso(&((**raiz).dir), no);
     }
     balancear(raiz);  
-    (*raiz)->altura = alturaArvore(*raiz);   
+    atualizarAltura((*raiz));  
 }
 
 
@@ -50,24 +50,27 @@ void balancear(Curso **raiz){
             rotacaoEsquerda(raiz);
         }
     }
-
 }
 
 int fb(Curso *no){
-    return (alturaArvore(no->esq) - alturaArvore(no->dir));
+    int fator = 0;
+    if(no)
+        fator = (alturaArvore(no->esq) - alturaArvore(no->dir));
+    return fator;
 }
 
 void rotacaoEsquerda(Curso **raiz){
     Curso *aux;
-    
-
+    printf("a\n");
+    if(!(*raiz)->dir)
+        printf("Aqui não tem nada\n");
     aux = (*raiz)->dir;
     (*raiz)->dir = aux->esq;
     aux->esq = (*raiz);
     (*raiz) = aux;
 
-    (*raiz)->altura = alturaArvore(raiz);
-    (*raiz)->esq->altura = alturaArvore((*raiz)->esq);
+    atualizarAltura((*raiz)->esq);
+    atualizarAltura((*raiz));
 
 }
 
@@ -79,6 +82,23 @@ void rotacaoDireita(Curso **raiz){
     aux->dir = (*raiz);
     (*raiz) = aux;
 
-    (*raiz)->altura = alturaArvore(raiz);
-    (*raiz)->dir->altura = alturaArvore((*raiz)->dir);
+    atualizarAltura((*raiz)->dir);
+    atualizarAltura((*raiz));
+
+}
+
+int getAltura(Curso *raiz){
+    int altura = -1;
+    if(raiz)
+        altura = raiz->altura;
+    return altura;
+}
+
+void atualizarAltura(Curso *raiz){
+    int alturaEsq, alturaDir;
+
+    alturaEsq = getAltura(raiz->esq);
+    alturaDir = getAltura(raiz->dir);
+
+    raiz->altura = (alturaEsq > alturaDir ? alturaEsq : alturaDir) + 1;
 }
