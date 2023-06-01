@@ -22,8 +22,8 @@ int main(){
     inserirCurso(&raiz, criarNoCurso(2550, "Biologia", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2400, "Historia", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2410, "Analise", 10, 12));
-    imprimirCurso(raiz);
     inserirCurso(&raiz, criarNoCurso(2430, "Direito", 10, 12));
+    imprimirCurso(raiz);
     // inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
 
     // Desenho da arvore

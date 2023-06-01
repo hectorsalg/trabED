@@ -41,12 +41,12 @@ void balancear(Curso **raiz){
 
         if(fb(*raiz) == 2){
             if(fb((*raiz)->esq) < 0)
-                rotacaoEsquerda(&((*raiz)->dir));
+                rotacaoEsquerda(&((*raiz)->esq));
             rotacaoDireita(raiz);
 
         }else if(fb(*raiz) == -2){
             if(fb((*raiz)->dir) > 0)
-                rotacaoDireita(&((*raiz)->esq));
+                rotacaoDireita(&((*raiz)->dir));
             rotacaoEsquerda(raiz);
         }
     }
@@ -61,9 +61,10 @@ int fb(Curso *no){
 
 void rotacaoEsquerda(Curso **raiz){
     Curso *aux;
-    printf("a\n");
+
     if(!(*raiz)->dir)
         printf("Aqui não tem nada\n");
+
     aux = (*raiz)->dir;
     (*raiz)->dir = aux->esq;
     aux->esq = (*raiz);
