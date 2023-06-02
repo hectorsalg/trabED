@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Avl.h"
-#include "inserirCurso.h"
+#include "inserir.h"
 #include "imprimirCurso.h"
-#include "inserirDisciplina.h"
 #include "imprimirDisciplina.h"
 #include "removerCurso.h"
 #include "altura.h"
