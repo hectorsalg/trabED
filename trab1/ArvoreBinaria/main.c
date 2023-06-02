@@ -39,11 +39,11 @@ int main(){
 
     printf("Tempo para preencher Arvore: %.5lf milissegundos\n", tempo);
     
-    // inserirDisciplina(&raiz, 2002, criarNoDisciplina(1, "ED_2", 1, 60));
-    // inserirDisciplina(&raiz, 2002, criarNoDisciplina(2, "ED_1", 1, 60));
-    // imprimirDisciplinasCurso(raiz, 2002);
-    // removerDisc(&raiz, 2002, 1);
-    // imprimirDisciplinasCurso(raiz, 2002);
+    inserirDisciplina(&raiz, 2002, criarNoDisciplina(1, "ED_2", 1, 60));
+    inserirDisciplina(&raiz, 2002, criarNoDisciplina(2, "ED_1", 1, 60));
+    imprimirDisciplinasCurso(raiz, 2002);
+    removerDisc(&raiz, 2002, 1);
+    imprimirDisciplinasCurso(raiz, 2002);
     // imprimirCursos(raiz);
     
     do{

@@ -31,6 +31,20 @@ int main(){
     removerCurso(&raiz, 2550);
     imprimirCursos(raiz);
 
+    inserirDisciplina(&raiz, 2002, criarNoDisciplina(1, "ED_2", 1, 60));
+    inserirDisciplina(&raiz, 2002, criarNoDisciplina(2, "ED_1", 1, 60));
+    imprimirDisciplinasCurso(raiz, 2002);
+    removerDisc(&raiz, 2002, 1);
+    imprimirDisciplinasCurso(raiz, 2002);
+
+    aux = existeCurso(raiz, 2002);
+
+    if(aux)
+        printf("aux\n");
+
+    if(aux->disciplinas)
+        printf("Ok\n");
+
     fim = clock();
 
     tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
