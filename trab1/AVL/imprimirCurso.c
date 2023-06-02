@@ -8,8 +8,8 @@
 void imprimirCurso(Curso *raiz){ // InOrder
     if(raiz){
         
-        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
-        if(raiz->disciplinas) imprimirDadosDisc(raiz->disciplinas);
+        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\nAltura: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana, raiz->altura);
+        // if(raiz->disciplinas) imprimirDadosDisc(raiz->disciplinas);
         imprimirCurso(raiz->esq);
         imprimirCurso(raiz->dir);
     }

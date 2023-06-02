@@ -32,9 +32,12 @@ void updateHeight(struct Node* node) {
 
 // Função para realizar uma rotação simples à esquerda
 struct Node* rotateLeft(struct Node* node) {
-    struct Node* newRoot = node->right;
+    struct Node* newRoot;
+
+    newRoot = node->right;
     node->right = newRoot->left;
     newRoot->left = node;
+    
     updateHeight(node);
     updateHeight(newRoot);
     return newRoot;

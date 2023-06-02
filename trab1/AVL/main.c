@@ -23,8 +23,8 @@ int main(){
     inserirCurso(&raiz, criarNoCurso(2400, "Historia", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2410, "Analise", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2430, "Direito", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
     imprimirCurso(raiz);
-    // inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
 
     // Desenho da arvore
     // https://docs.google.com/spreadsheets/d/136U-07lrStLV6qE96hQp1BF0bdz2X90hQRP7Gl8jeCE/edit?usp=sharing

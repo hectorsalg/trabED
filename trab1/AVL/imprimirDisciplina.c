@@ -6,7 +6,7 @@
 
 void imprimirDisciplina(Disciplina *raiz){
     if(raiz){
-        printf("CodigoD: %d\nNome Dis: %s\nBlocos da disciplina: %d\nCarga Horaria: %d\n\n", raiz->codD, raiz->nome, raiz->qtdBDisciplina, raiz->cargHor);
+        printf("CodigoD: %d\nNome Dis: %s\nBlocos da disciplina: %d\nCarga Horaria: %d\n\n", raiz->codD, raiz->nome, raiz->bloco, raiz->cargHor);
     }
 }
 
