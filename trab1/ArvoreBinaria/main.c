@@ -2,23 +2,50 @@
 #include <stdlib.h>
 #include <time.h>
 #include "curso.h"
-#include "inserirCurso.h"
-#include "imprimirCurso.h"
-#include "inserirDisciplina.h"
-#include "imprimirDisciplina.h"
-#include "removerCurso.h"
+#include "inserir.h"
+#include "imprimir.h"
+#include "remover.h"
 
 
 
 
 int main(){
+    
     Curso *raiz, *aux;
     raiz = criarCurso();
     int op, cod, qtdBCurso, semana, bloco, cargaHor, codD;
     char nome[70];
-    float tempo;
-    time_t inicio, fim;
-    inicio = time(NULL);
+
+    clock_t inicio, fim;
+
+    double tempo;
+
+    inicio = clock();
+
+    inserirCurso(&raiz, criarNoCurso(2002, "Sistemas", 8, 10));
+    inserirCurso(&raiz, criarNoCurso(2000, "Nutrição", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(1900, "ADM", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(1950, "Matematica", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2500, "Medicina", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2550, "Biologia", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2400, "Historia", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2410, "Analise", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2430, "Direito", 10, 12));
+    inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
+
+    fim = clock();
+
+    tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
+
+    printf("Tempo para preencher Arvore: %.5lf milissegundos\n", tempo);
+    
+    // inserirDisciplina(&raiz, 2002, criarNoDisciplina(1, "ED_2", 1, 60));
+    // inserirDisciplina(&raiz, 2002, criarNoDisciplina(2, "ED_1", 1, 60));
+    // imprimirDisciplinasCurso(raiz, 2002);
+    // removerDisc(&raiz, 2002, 1);
+    // imprimirDisciplinasCurso(raiz, 2002);
+    // imprimirCursos(raiz);
+    
     do{
         printf("Digite a opcao: ");
         scanf("%d", &op);
@@ -108,9 +135,9 @@ int main(){
             printf("Digite o codigo da Disciplina: ");
             scanf("%d", &codD);
 
-            aux = existeCurso(raiz, cod);
-            if(aux)
-                removerDisc(&(aux->disciplinas), codD);
+            // aux = existeCurso(raiz, cod);
+            // if(aux)
+            removerDisc(&raiz, cod, codD);
             break;
         case 11:
             // (9) Excluir um curso dado o código do mesmo, desde que não tenha nenhuma disciplina cadastrada para aquele curso.
@@ -133,7 +160,7 @@ int main(){
     // inserirCurso(&raiz, criarNoCurso(2410, "Analise", 10, 12));
     // inserirCurso(&raiz, criarNoCurso(2430, "Direito", 10, 12));
     // inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
-
+    imprimirCursos(raiz);
     // Desenho da arvore
     // https://docs.google.com/spreadsheets/d/136U-07lrStLV6qE96hQp1BF0bdz2X90hQRP7Gl8jeCE/edit?usp=sharing
 
@@ -150,11 +177,11 @@ int main(){
     // printf("AAA\n");
 
     // printf("Altura da arvore: %d\n", alturaArvore(raiz));
-    fim = time(NULL);
+    // fim = time(NULL);
 
-    tempo = difftime(fim, inicio);
+    // tempo = difftime(fim, inicio);
 
-    printf("Tempo: %f\n", tempo);
+    // printf("Tempo: %f\n", tempo);
 
     return 0;
 }

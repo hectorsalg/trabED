@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "Avl.h"
+#include "balancear.h"
 #include "inserir.h"
-#include "imprimirCurso.h"
-#include "imprimirDisciplina.h"
-#include "removerCurso.h"
-#include "altura.h"
-
+#include "imprimir.h"
+#include "remover.h"
 
 
 int main(){
     Curso *raiz, *aux;
     raiz = NULL;
+
+    clock_t inicio, fim;
+
+    double tempo;
+
+    inicio = clock();
 
     inserirCurso(&raiz, criarNoCurso(2002, "Sistemas", 8, 10));
     inserirCurso(&raiz, criarNoCurso(2000, "Nutrição", 10, 12));
@@ -23,7 +28,14 @@ int main(){
     inserirCurso(&raiz, criarNoCurso(2410, "Analise", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2430, "Direito", 10, 12));
     inserirCurso(&raiz, criarNoCurso(2450, "Enfermagem", 10, 12));
-    imprimirCurso(raiz);
+    removerCurso(&raiz, 2550);
+    imprimirCursos(raiz);
+
+    fim = clock();
+
+    tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
+
+    printf("Tempo para preencher Arvore: %.5lf milissegundos\n", tempo);
 
     // Desenho da arvore
     // https://docs.google.com/spreadsheets/d/136U-07lrStLV6qE96hQp1BF0bdz2X90hQRP7Gl8jeCE/edit?usp=sharing
@@ -38,7 +50,7 @@ int main(){
     // imprimirCurso(raiz);
     // printf("AAA\n");
 
-    printf("Altura da arvore: %d\n", alturaArvore(raiz));
+    // printf("Altura da arvore: %d\n", alturaArvore(raiz));
 
     return 0;
 }
