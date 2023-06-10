@@ -1,0 +1,69 @@
+Aleatório igual nas duas
+
+inserção 50 
+AVL: media 0.04900 milissegundos
+ABB: media 0.03400 milissegundos
+
+inserção 100 
+
+AVL: media 0.09000 milissegundos
+ABB: media 0.04700 milissegundos
+
+inserção 150 
+
+AVL: media 0.12500 milissegundos
+ABB: media 0.06300 milissegundos
+
+inserção 200 
+
+AVL: media 0.17200 milissegundos
+ABB: media 0.08000 milissegundos
+
+
+
+Crescente:
+
+inserção 50 
+AVL: media 0.04700 milissegundos
+ABB: media 0.05700 milissegundos
+
+inserção 100 
+
+AVL: media 0.09600 milissegundos
+ABB: media 0.16500 milissegundos
+
+inserção 150 
+
+AVL: media 0.13900 milissegundos
+ABB: media 0.28600 milissegundos
+
+inserção 200 
+
+AVL: media 0.20700 milissegundos
+ABB: media 0.60100 milissegundos
+
+
+Descrescente:
+
+inserção 50 
+AVL: media 0.04900 milissegundos
+ABB: media 0.05900 milissegundos
+
+inserção 100 
+
+AVL: media 0.08500 milissegundos
+ABB: media 0.15700 milissegundos
+
+inserção 150 
+
+AVL: media 0.16000 milissegundos
+ABB: media 0.25000 milissegundos
+
+inserção 200 
+
+AVL: media 0.17900 milissegundos
+ABB: media  0.43400 milissegundos
+
+Aleatório Aleatório
+
+
