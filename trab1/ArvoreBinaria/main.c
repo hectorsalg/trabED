@@ -6,9 +6,6 @@
 #include "imprimir.h"
 #include "remover.h"
 
-
-
-
 int main(){
     
     Curso *raiz, *aux;
@@ -22,7 +19,8 @@ int main(){
 
     inicio = clock();
 
-inserirCurso(&raiz, criarNoCurso(200, "Ciência da Computação", 8, 10));
+    {
+    inserirCurso(&raiz, criarNoCurso(200, "Ciência da Computação", 8, 10));
     inserirCurso(&raiz, criarNoCurso(199, "Sistemas de Informação", 7, 10));
     inserirCurso(&raiz, criarNoCurso(198, "Análise e Desenvolvimento de Sistemas", 6, 10));
     inserirCurso(&raiz, criarNoCurso(197, "Redes de Computadores", 5, 10));
@@ -228,7 +226,8 @@ inserirCurso(&raiz, criarNoCurso(200, "Ciência da Computação", 8, 10));
     inserirCurso(&raiz, criarNoCurso(3, "Engenharia de Produção", 8, 10));
     inserirCurso(&raiz, criarNoCurso(2, "Engenharia de Computação", 8, 10));
     inserirCurso(&raiz, criarNoCurso(1, "Ciência da Computação", 8, 10));
-
+}
+    
     fim = clock();
 
     tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;

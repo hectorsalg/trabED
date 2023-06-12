@@ -68,5 +68,7 @@ void auxiliarInserirDisc(Disciplina **raiz, Disciplina *no){
         auxiliarInserirDisc(&((*raiz)->esq), no);
     else if(no->codD > (*raiz)->codD)
         auxiliarInserirDisc( &((*raiz)->esq), no);
+    balancearDis(raiz);
+    atualizarAlturaDis(*raiz);
 }
 

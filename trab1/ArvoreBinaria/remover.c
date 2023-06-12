@@ -88,7 +88,7 @@ void removerDisc(Curso **raiz, int codC, int codD){
 
 void auxRemoverDisc(Disciplina **raiz, int codD){
 
-    if(raiz){
+    if(*raiz){
         if((*raiz)->codD == codD){
             Disciplina *aux, *endFilho;
             aux = (*raiz);
