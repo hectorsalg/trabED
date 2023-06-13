@@ -21,7 +21,7 @@ int main(){
     // inserirVinteCinco(&raiz, vet);
     // inserirCinquenta(&raiz, vet);
     // inserirSetentaCinco(&raiz, vet);
-    inserirCem(&raiz, vet);
+    inserirValoresTestes(&raiz, vet);
     // clock_t inicio, fim;
 
     // double tempo;

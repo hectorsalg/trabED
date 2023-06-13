@@ -10,7 +10,7 @@ int main() {
     int numero;
 
     // Abrir o arquivo para leitura
-    arquivo = fopen("arquivo.txt", "w");
+    arquivo = fopen("arquivo2.txt", "w");
 
     // Verificar se o arquivo foi aberto corretamente
     if (arquivo == NULL) {

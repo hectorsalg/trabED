@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "curso.h"
+#include "Avl.h"
 #include "inserir.h"
 #include "testeDeTempo.h"
 
@@ -50,6 +50,7 @@ void inserirValoresTestes(Curso **raiz, int vet[], double temps[]){
         inicio = clock();
         inserirCurso(raiz, criarNoCurso(vet[i], "Curso", 8, 10));
         fim = clock();
+        
         tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
 
         if(i == 24999)
@@ -63,12 +64,11 @@ void inserirValoresTestes(Curso **raiz, int vet[], double temps[]){
         }
 
     }
-    temps[3] = tempo;
-    // tempo += t3;
-    printf("Tempo para preencher Vinte Cinco: %.5lf milissegundos\n", temps[0]);
-    printf("Tempo para preencher Cinquenta: %.5lf milissegundos\n", temps[1]);
-    printf("Tempo para preencher Setenta e cinco: %.5lf milissegundos\n", temps[2]); 
-    printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
-
+    ++cont;
+    temps[cont] = tempo;
+    // printf("Tempo para preencher Vinte Cinco: %.5lf milissegundos\n", temps[0]);
+    // printf("Tempo para preencher Cinquenta: %.5lf milissegundos\n", temps[1]);
+    // printf("Tempo para preencher Setenta e cinco: %.5lf milissegundos\n", temps[2]); 
+    // printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
 
 }
