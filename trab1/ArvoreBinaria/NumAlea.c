@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-# define Tam 200
+# define Tam 5000
 
 int geraNum(){
-    return ((rand() % (9999 - 1000 + 1)) + 1000);
+    return ((rand() % (50000 - 10000 + 1)) + 10000);
 }
 
 int comparar(int vetor[], int i, int tam, int numAle){
@@ -20,9 +20,7 @@ int comparar(int vetor[], int i, int tam, int numAle){
 void aleatorio(int vetor[], int i, int tam){
     if(i < tam){
         int numAle = geraNum();
-        
         if(comparar(vetor, i, tam, numAle)){
-            printf("Entrou\n");
             aleatorio(vetor, i, tam);
         }else{
             vetor[i] = numAle;
