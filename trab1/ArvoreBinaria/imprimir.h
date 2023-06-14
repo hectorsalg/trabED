@@ -1,4 +1,4 @@
-void imprimirCurso(Curso *raiz);
+void imprimirCurso(Curso *no);
 void imprimirCursos(Curso *raiz); // imprimir todos os dados do curso
 void imprimirDadosCurso(Curso *raiz, int cod); // imprimir somente os códigos
 void imprimirCursosQtdB(Curso *raiz, int qtdB); // imprimir quantidade de cursos com mesma quantidade de blocos

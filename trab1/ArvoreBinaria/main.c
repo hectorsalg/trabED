@@ -16,39 +16,22 @@ int main(){
     int op, cod, qtdBCurso, semana, bloco, cargaHor, codD, vet[TAM];
     char nome[70];
 
+    double temps = 0, busca = 0;
     lerArquivo(vet);
-    embaralhar_vetor(vet);
-    // inserirVinteCinco(&raiz, vet);
-    // inserirCinquenta(&raiz, vet);
-    // inserirSetentaCinco(&raiz, vet);
-    inserirValoresTestes(&raiz, vet);
-    // clock_t inicio, fim;
+    // embaralhar_vetor(vet);
+    // criaArquivo(vet);
 
-    // double tempo;
+    for(int i = 0; i < 1; i++){
+        inserirValoresTestes(&raiz, vet, &temps);
+        tempoDeBusca(&raiz, vet, &busca);
+        liberarArvoreCurso(&raiz);
+    }
 
-    // inicio = clock();
-    
-    // fim = clock();
+    temps /= 30;
+    busca /= 30;
+    printf("Media de inserir 100: %.5lf milissegundos\n", temps);
+    printf("Media de busca 100: %.5lf milissegundos\n", busca);
 
-    // tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
-
-    // printf("Tempo para preencher Arvore: %.5lf milissegundos\n", tempo);
-
-
-
-    // inicio = clock();
-
-    // aux = existeCurso(raiz, 1);
-
-    // fim = clock();
-
-    // tempo = ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
-
-    // printf("Tempo para busca Arvore: %.5lf milissegundos\n", tempo);
-
-    removerCurso(&raiz, 6);
-    
-    liberarArvoreCurso(&raiz);
     imprimirCursos(raiz);
     return 0;
 }

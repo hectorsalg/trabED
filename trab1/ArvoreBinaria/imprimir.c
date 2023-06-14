@@ -7,9 +7,9 @@
 
 // --------------------------------Cursos --------------------------------
 
-void imprimirCurso(Curso *raiz){
-    if(raiz)
-        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", raiz->codC, raiz->nome, raiz->qtdBCurso, raiz->semana);
+void imprimirCurso(Curso *no){
+    if(no)
+        printf("Codigo: %d\nNome: %s\nBlocos do Curso: %d\nSemanas: %d\n\n", no->codC, no->nome, no->qtdBCurso, no->semana);
 }
 
 // 1
@@ -26,7 +26,7 @@ void imprimirDadosCurso(Curso *raiz, int cod){
     Curso *aux;
     aux = existeCurso(raiz, cod);
     if(aux){
-        imprimirCurso(raiz);
+        imprimirCurso(aux);
     }
 }
 
@@ -73,7 +73,7 @@ void imprimirDisciplinasCurso(Curso *raiz, int codC){
     Curso *aux;
     aux = existeCurso(raiz, codC);
     if(aux)
-        imprimirDisciplinas(raiz->disciplinas);
+        imprimirDisciplinas(aux->disciplinas);
 }
 
 // 5
@@ -91,8 +91,7 @@ void imprimirDiscBloco(Curso *raiz, int codC, int bloco){
     aux = existeCurso(raiz, codC);
 
     if(aux){
-        if(codC == raiz->codC)
-            DiscBloco(raiz->disciplinas, bloco);
+        DiscBloco(aux->disciplinas, bloco);
     }
 }
 
@@ -112,7 +111,7 @@ void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaeHor){
     Curso *aux;
     aux = existeCurso(raiz, codC);
     if(aux)
-        cargaHorDis(raiz->disciplinas, cargaeHor); 
+        cargaHorDis(aux->disciplinas, cargaeHor); 
 }
 
 // (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código

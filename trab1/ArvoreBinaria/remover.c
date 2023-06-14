@@ -79,14 +79,14 @@ void liberarArvoreCurso(Curso **raiz){
 
 // --------------------------------Disciplinas --------------------------------
 
-void removerDisc(Curso **raiz, int codC, int codD){
+void auxRemoverDisc(Curso **raiz, int codC, int codD){
     Curso *aux;
     aux = existeCurso((*raiz), codC);
     if(aux)
-        auxRemoverDisc(&aux->disciplinas, codD);
+        removerDisc(&aux->disciplinas, codD);
 }
 
-void auxRemoverDisc(Disciplina **raiz, int codD){
+void removerDisc(Disciplina **raiz, int codD){
 
     if(*raiz){
         if((*raiz)->codD == codD){
@@ -103,9 +103,9 @@ void auxRemoverDisc(Disciplina **raiz, int codD){
             }
             free(aux);
         }else if(codD < (*raiz)->codD)
-            auxRemoverDisc(&((*raiz)->esq), codD);
+            removerDisc(&((*raiz)->esq), codD);
         else if(codD > (*raiz)->codD)
-            auxRemoverDisc(&((*raiz)->dir), codD);
+            removerDisc(&((*raiz)->dir), codD);
     }
 }
 

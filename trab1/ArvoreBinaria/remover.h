@@ -7,8 +7,8 @@ int alturaArvore(Curso *raiz);
 
 
 
-void removerDisc(Curso **raiz, int codC, int codD); // remover disciplina do curso por código de ambos
-void auxRemoverDisc(Disciplina **raiz, int codD);
+void auxRemoverDisc(Curso **raiz, int codC, int codD); // remover disciplina do curso por código de ambos
+void removerDisc(Disciplina **raiz, int codD);
 int folhaDis(Disciplina *raiz);
 Disciplina *enderecoFilhoDis(Disciplina *raiz);
 void maiorFilhoEsqDis(Disciplina **filhoRecebe, Disciplina *outroFilho);

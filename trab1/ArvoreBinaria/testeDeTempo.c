@@ -21,6 +21,29 @@ void embaralhar_vetor(int vet[]) {
     }
 }
 
+void criaArquivo(int vet[]){
+    FILE *arquivo;
+    int vetor[10];
+    int contador = 0;
+    int numero;
+
+    // Abrir o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "w");
+
+    // Verificar se o arquivo foi aberto corretamente
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+    }
+
+    for(int i = 1; i <= TAM; i++)
+        fprintf(arquivo, "%d\n", vet[i]);
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    
+}
+
 void lerArquivo(int vetor[]){
     FILE *arquivo;
     int contador = 0;
@@ -41,34 +64,33 @@ void lerArquivo(int vetor[]){
     fclose(arquivo);
 }
 
-void inserirValoresTestes(Curso **raiz, int vet[], double temps[]){
+void inserirValoresTestes(Curso **raiz, int vet[], double *temps){
     clock_t inicio, fim;
     double tempo = 0.0;
     int cont = 0;
-
+    
     for(int i = 0; i < TAM; i++){
         inicio = clock();
         inserirCurso(raiz, criarNoCurso(vet[i], "Curso", 8, 10));
         fim = clock();
         tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
-
-        if(i == 24999)
-            temps[cont] = tempo;
-        else if(i == 49999){
-            ++cont;
-            temps[cont] = tempo;
-        }else if(i == 74999){
-            ++cont;
-            temps[cont] = tempo;
-        }
-
     }
-    temps[3] = tempo;
-    // tempo += t3;
-    printf("Tempo para preencher Vinte Cinco: %.5lf milissegundos\n", temps[0]);
-    printf("Tempo para preencher Cinquenta: %.5lf milissegundos\n", temps[1]);
-    printf("Tempo para preencher Setenta e cinco: %.5lf milissegundos\n", temps[2]); 
-    printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
+    *temps += tempo;
+     
+    // printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
 
+}
 
+void tempoDeBusca(Curso **raiz, int vet[], double *temps){
+    clock_t inicio, fim;
+    double tempo = 0.0;
+
+    inicio = clock();
+    existeCurso(*raiz, 100000);
+    fim = clock();
+    tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
+    
+    *temps += tempo;
+     
+    // printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", temps);    
 }

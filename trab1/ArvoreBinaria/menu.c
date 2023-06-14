@@ -30,7 +30,7 @@ do{
             printf("Digite o codigo do curso: ");
             scanf("%d", &cod);
 
-            inserirDisciplina(&raiz, cod, criarNoDisciplina(cod, nome, bloco, cargaHor));
+            auxiliarInserirDisc(&raiz, cod, criarNoDisciplina(cod, nome, bloco, cargaHor));
             break;
         case 3:
             // (1) Imprimir a árvore de cursos em ordem crescente pelo código do curso;

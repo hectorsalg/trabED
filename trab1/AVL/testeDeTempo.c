@@ -41,7 +41,7 @@ void lerArquivo(int vetor[]){
     fclose(arquivo);
 }
 
-void inserirValoresTestes(Curso **raiz, int vet[], double temps[]){
+void inserirValoresTestes(Curso **raiz, int vet[], double *temps){
     clock_t inicio, fim;
     double tempo = 0.0;
     int cont = 0;
@@ -50,25 +50,24 @@ void inserirValoresTestes(Curso **raiz, int vet[], double temps[]){
         inicio = clock();
         inserirCurso(raiz, criarNoCurso(vet[i], "Curso", 8, 10));
         fim = clock();
-        
         tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
-
-        if(i == 24999)
-            temps[cont] = tempo;
-        else if(i == 49999){
-            ++cont;
-            temps[cont] = tempo;
-        }else if(i == 74999){
-            ++cont;
-            temps[cont] = tempo;
-        }
-
     }
-    ++cont;
-    temps[cont] = tempo;
-    // printf("Tempo para preencher Vinte Cinco: %.5lf milissegundos\n", temps[0]);
-    // printf("Tempo para preencher Cinquenta: %.5lf milissegundos\n", temps[1]);
-    // printf("Tempo para preencher Setenta e cinco: %.5lf milissegundos\n", temps[2]); 
+    *temps += tempo;
+     
     // printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
 
+}
+
+void tempoDeBusca(Curso **raiz, int vet[], double *temps){
+    clock_t inicio, fim;
+    double tempo = 0.0;
+
+    inicio = clock();
+    existeCurso(*raiz, 10000);
+    fim = clock();
+    tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
+    
+    *temps += tempo;
+     
+    // printf("Tempo para preencher Cem: %.5lf milissegundos\n\n", tempo);    
 }

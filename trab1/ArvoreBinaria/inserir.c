@@ -43,22 +43,22 @@ Disciplina *criarNoDisciplina(int codD, char nome[], int bloco, int cargHor){
     return raiz;
 }
 
-void inserirDisciplina(Curso **curso, int codC, Disciplina *no){
+void auxiliarInserirDisc(Curso **curso, int codC, Disciplina *no){
     //fazer uma flag para saber se inseriu
     Curso *aux;
     aux = existeCurso(*curso, codC);
 
     if(aux){
         if(aux->qtdBCurso > no->bloco && no->cargHor % (aux)->semana == 0)
-            auxiliarInserirDisc(&(aux->disciplinas), no);
+            inserirDisciplina(&(aux->disciplinas), no);
     }
 }
 
-void auxiliarInserirDisc(Disciplina **raiz, Disciplina *no){
+void inserirDisciplina(Disciplina **raiz, Disciplina *no){
     if(!*raiz)
         *raiz = no;
     else if(no->codD < (*raiz)->codD)
-        auxiliarInserirDisc(&((*raiz)->esq), no);
+        inserirDisciplina(&((*raiz)->esq), no);
     else if(no->codD > (*raiz)->codD)
-        auxiliarInserirDisc( &((*raiz)->esq), no);
+        inserirDisciplina( &((*raiz)->esq), no);
 }

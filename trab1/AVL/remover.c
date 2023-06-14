@@ -56,6 +56,14 @@ Curso *enderecoFilho(Curso *raiz) {
     return aux;
 }
 
+void liberarArvoreCurso(Curso **raiz){
+    if(*raiz){
+        liberarArvoreCurso(&((*raiz)->esq));
+        liberarArvoreCurso(&((*raiz)->dir));
+        removerCurso(raiz, (*raiz)->codC);
+    }
+}
+
 // --------------------------------- Disciplinas --------------------------------
 
 void removerDisc(Curso **raiz, int codC, int codD){
