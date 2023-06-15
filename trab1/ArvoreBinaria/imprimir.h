@@ -7,7 +7,7 @@ void imprimirDiscCurso(Curso *raiz, int codC, int codD);
 void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaHor); // imprimir todas as disciplinas com a mesma carga 
 void imprimirDiscBloco(Curso *raiz, int codC, int bloco); // imprimir as disciplinas de um curso de um dado bloco
 
-void DiscBloco(Disciplina *raiz, int bloco);
+void discBloco(Disciplina *raiz, int bloco);
 void cargaHorDis(Disciplina *dis, int CargaHor);
 
 void imprimirDisciplina(Disciplina *raiz);

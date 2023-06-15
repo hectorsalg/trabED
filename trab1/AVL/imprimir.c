@@ -90,17 +90,17 @@ void imprimirDiscBloco(Curso *raiz, int codC, int bloco){
 
     if(aux){
         if(codC == raiz->codC)
-            DiscBloco(raiz->disciplinas, bloco);
+            discBloco(raiz->disciplinas, bloco);
     }
 }
 
 // 6
-void DiscBloco(Disciplina *raiz, int bloco){
+void discBloco(Disciplina *raiz, int bloco){
     if(raiz){
-        DiscBloco(raiz->esq, bloco);
+        discBloco(raiz->esq, bloco);
         if(raiz->bloco == bloco)
             imprimirDisciplina(raiz);
-        DiscBloco(raiz->dir, bloco);
+        discBloco(raiz->dir, bloco);
     }
 }
 
