@@ -60,5 +60,5 @@ void inserirDisciplina(Disciplina **raiz, Disciplina *no){
     else if(no->codD < (*raiz)->codD)
         inserirDisciplina(&((*raiz)->esq), no);
     else if(no->codD > (*raiz)->codD)
-        inserirDisciplina( &((*raiz)->esq), no);
+        inserirDisciplina( &((*raiz)->dir), no);
 }

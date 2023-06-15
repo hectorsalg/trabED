@@ -130,3 +130,11 @@ void maiorFilhoEsqDis(Disciplina **filhoRecebe, Disciplina *outroFilho){
         (*filhoRecebe) = outroFilho;
     maiorFilhoEsqDis(&((*filhoRecebe)->dir), outroFilho);
 }
+
+void liberarArvoreDisc(Disciplina **raiz){
+    if(*raiz){
+        liberarArvoreDisc(&((*raiz)->esq));
+        liberarArvoreDisc(&((*raiz)->dir));
+        removerDisc(raiz, (*raiz)->codD);
+    }
+}

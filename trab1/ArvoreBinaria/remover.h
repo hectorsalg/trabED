@@ -14,3 +14,4 @@ Disciplina *enderecoFilhoDis(Disciplina *raiz);
 void maiorFilhoEsqDis(Disciplina **filhoRecebe, Disciplina *outroFilho);
 
 void liberarArvoreCurso(Curso **raiz);
+void liberarArvoreDisc(Disciplina **raiz);
