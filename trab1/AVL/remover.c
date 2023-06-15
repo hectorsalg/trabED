@@ -43,7 +43,7 @@ void maiorFilhoEsq(Curso **filho_recebe, Curso *filho_outro){
     }
 }
 
-int ehfolha(Curso *raiz) { 
+int folha(Curso *raiz) { 
     return !(raiz->esq || raiz->dir);
 }
 
