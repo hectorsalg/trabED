@@ -106,11 +106,11 @@ void discBloco(Disciplina *raiz, int bloco){
 
 // (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
 // do curso e a carga horária devem ser informadas pelo usuário;
-void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaeHor){
+void imprimirDiscCursoHorario(Curso *raiz, int codC, int cargaHor){
     Curso *aux;
     aux = existeCurso(raiz, codC);
     if(aux)
-        cargaHorDis(raiz->disciplinas, cargaeHor); 
+        cargaHorDis(raiz->disciplinas, cargaHor); 
 }
 
 // (7) Imprimir todas as disciplinas de um determinado curso com a mesma carga horária, onde o código
