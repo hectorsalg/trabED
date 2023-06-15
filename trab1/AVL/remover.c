@@ -21,7 +21,7 @@ void removerCurso(Curso **raiz, int codC) {
                 }else{ // dois filhos
                     Curso *filho_esq;
                     filho_esq = (*raiz)->esq;
-                    esq_filh(&((*raiz)->esq), (*raiz)->dir);
+                    maiorFilhoEsq(&((*raiz)->esq), (*raiz)->dir);
                     *raiz = filho_esq;
                 }
                 free(aux);
@@ -35,9 +35,9 @@ void removerCurso(Curso **raiz, int codC) {
     }
 }
 
-void esq_filh(Curso **filho_recebe, Curso *filho_outro){
+void maiorFilhoEsq(Curso **filho_recebe, Curso *filho_outro){
     if(*filho_recebe){
-        esq_filh((&(*filho_recebe)->dir), filho_outro);
+        maiorFilhoEsq((&(*filho_recebe)->dir), filho_outro);
     }else{
         *filho_recebe = filho_outro;
     }
