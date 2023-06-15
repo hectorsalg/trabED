@@ -25,10 +25,13 @@ int main(){
     }
     imprimirCursos(raiz);
 
+    temps /= 100000;
     temps /= 30;
+    busca /= 100000;
     busca /= 30;
-    printf("Media de inserir 100: %.5lf milissegundos\n", temps);
-    printf("Media de busca 100: %.5lf milissegundos\n", busca);
+
+    printf("Media de inserir 100: %.9lf milissegundos\n", temps);
+    printf("Media de busca 100: %.9lf milissegundos\n", busca);
     
     // temps = 0;
     // for(int i = 0; i < 30; i++){

@@ -21,16 +21,18 @@ int main(){
     // embaralhar_vetor(vet);
     // criaArquivo(vet);
 
-    for(int i = 0; i < 1; i++){
+    for(int i = 0; i < 30; i++){
         inserirValoresTestes(&raiz, vet, &temps);
         tempoDeBusca(&raiz, vet, &busca);
         liberarArvoreCurso(&raiz);
     }
 
+    temps /= 100000;
     temps /= 30;
+    busca /= 100000;
     busca /= 30;
-    printf("Media de inserir 100: %.5lf milissegundos\n", temps);
-    printf("Media de busca 100: %.5lf milissegundos\n", busca);
+    printf("Media de inserir 100: %.9lf milissegundos\n", temps);
+    printf("Media de busca 100: %.9lf milissegundos\n", busca);
 
     imprimirCursos(raiz);
     return 0;

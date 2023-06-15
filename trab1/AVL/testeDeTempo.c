@@ -27,7 +27,7 @@ void lerArquivo(int vetor[]){
     int numero;
 
     // Abrir o arquivo para leitura
-    arquivo = fopen("arquivo.txt", "r");
+    arquivo = fopen("arquivo2.txt", "r");
 
     // Verificar se o arquivo foi aberto corretamente
     if (arquivo == NULL)
@@ -45,10 +45,12 @@ void inserirValoresTestes(Curso **raiz, int vet[], double *temps){
     clock_t inicio, fim;
     double tempo = 0.0;
     int cont = 0;
+    Curso *aux;
 
     for(int i = 0; i < TAM; i++){
+        aux = criarNoCurso(vet[i], "Curso", 8, 10);
         inicio = clock();
-        inserirCurso(raiz, criarNoCurso(vet[i], "Curso", 8, 10));
+        inserirCurso(raiz, aux);
         fim = clock();
         tempo += ((double)(fim - inicio)/CLOCKS_PER_SEC) * 1000;
     }
