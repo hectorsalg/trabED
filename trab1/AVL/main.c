@@ -16,7 +16,7 @@ int main(){
     double temps = 0, busca = 0;
 
     lerArquivo(vet);
-    // embaralhar_vetor(vet);
+    // embaralharVetor(vet);
 
     for(int i = 0; i < 30; i++){
         inserirValoresTestes(&raiz, vet, &temps);
