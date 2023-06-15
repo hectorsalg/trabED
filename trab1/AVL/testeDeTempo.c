@@ -58,7 +58,7 @@ void inserirValoresTestes(Curso **raiz, int vet[], double *temps){
 
 }
 
-void tempoDeBusca(Curso **raiz, int vet[], double *temps){
+void tempoBusca(Curso **raiz, int vet[], double *temps){
     clock_t inicio, fim;
     double tempo = 0.0;
 

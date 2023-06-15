@@ -20,7 +20,7 @@ int main(){
 
     for(int i = 0; i < 30; i++){
         inserirValoresTestes(&raiz, vet, &temps);
-        tempoDeBusca(&raiz, vet, &busca);
+        tempoBusca(&raiz, vet, &busca);
         liberarArvoreCurso(&raiz);
     }
     imprimirCursos(raiz);
