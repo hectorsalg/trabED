@@ -12,7 +12,7 @@ void removerCurso(Curso **raiz, int codC) {
             if(!(*raiz)->disciplinas){
                 Curso *aux;
                 aux = *raiz;
-                if (ehfolha(*raiz)) {
+                if (folha(*raiz)) {
                     *raiz = NULL;
                 } else if (!((*raiz)->dir) || !((*raiz)->esq)) {
                     Curso *endFilho;

@@ -8,7 +8,7 @@
 #define TAM 100000
 double t1 = 0.0, t2 = 0.0, t3 = 0.0, t4 = 0.0;
 
-void embaralhar_vetor(int vet[]) {
+void embaralharVetor(int vet[]) {
     // Inicializa a semente do gerador de números aleatórios
     srand(time(NULL));
     
